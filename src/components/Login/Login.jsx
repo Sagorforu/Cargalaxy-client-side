@@ -1,14 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import login from "../../assets/login.json";
 
 const Login = () => {
+    const [error, setError]= useState("");
+
+    const handleLogin = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email,password);
+        if (!email) {
+            setError('Email is required.')
+        } else if (!password){
+            setError('Password is required.')
+        } else {
+            setError('');
+        }
+
+    }
+
   return (
     <div className=" py-10 bg-base-200">
       <div className="lg:w-[700px] w-full mx-auto">
         <div className="">
-          <form className="background-color p-20 rounded-lg">
+          <form onSubmit={handleLogin} className="background-color p-20 rounded-lg shadow-2xl">
             <div className="font-extrabold text-center text-3xl lg:text-4xl mb-10">
               <h2>Login Now</h2>
             </div>
@@ -32,6 +50,7 @@ const Login = () => {
                 required
               />
             </div>
+            <p className="text-red-600 mt-2">{error}</p>
             <div className="mt-4 text-center">
               <button className="my-btn btn-color lg:w-full hover:text-gray-800">
                 Login
