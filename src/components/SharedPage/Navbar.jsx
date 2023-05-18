@@ -10,7 +10,7 @@ const Navbar = () => {
     <div>
       <div className="py-5 lg:flex items-center justify-between lg:px-36 px-2">
         <Link to="/">
-          <h2 className="active font-bold text-4xl">
+          <h2 className="active font-bold text-5xl">
             Car<span className="active">Galaxy</span>
           </h2>
         </Link>

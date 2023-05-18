@@ -60,6 +60,9 @@ const SignUp = () => {
                   login
                 </Link>
               </h2>
+              <div className="mt-10">
+                <img className="mx-auto" src="https://i.ibb.co/tB24MCG/google.png" alt="" />
+              </div>
             </div>
           </form>
         </div>
