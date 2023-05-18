@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* .background-color{
+    background-image: linear-gradient(90deg, rgba(25, 224, 250, 0.05) 0%, rgba(2, 147, 184, 0.05) 100%);
+} */
+.background-color{
+    background-image: linear-gradient(180deg, rgba(25, 224, 250, 0.5) 50%, rgba(2, 147, 184, 0.05) 100%);
+}
+.btn-color{
+    background-image: linear-gradient(90deg, #01cec4 0%, #019991 100%);
+}
+.my-btn{
+    font-size: larger;
+    font-weight: 700;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 10px;
+}
+.my-container{
+    @apply lg:mx-20 lg:px-4 mx-2 px-2 
+}
+.text-color{
+    @apply bg-gradient-to-r from-[#07dacf] to-[#03bb93] inline-block text-transparent bg-clip-text
+}
+.active{
+    @apply bg-gradient-to-r from-[#23fff4] to-[#03bb93] inline-block text-transparent bg-clip-text font-bold
+}
+.default{
+    @apply text-[#03bb93] font-semibold
+}
