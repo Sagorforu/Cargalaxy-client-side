@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .background-color{
-    background-image: linear-gradient(90deg, rgba(25, 224, 250, 0.05) 0%, rgba(2, 147, 184, 0.05) 100%);
-} */
 .background-color{
     background-image: linear-gradient(180deg, rgba(25, 224, 250, 0.5) 50%, rgba(2, 147, 184, 0.05) 100%);
+}
+.background-header-color{
+    background-image: linear-gradient(180deg, rgba(1, 33, 37, 0.973) 50%, rgba(4, 32, 39, 0.05) 100%);
 }
 .btn-color{
     background-image: linear-gradient(90deg, #01cec4 0%, #019991 100%);
@@ -17,6 +17,13 @@
     color: white;
     padding: 8px 20px;
     border-radius: 10px;
+}
+.toy-btn{
+    font-size: larger;
+    font-weight: 700;
+    color: white;
+    padding: 20px 35px;
+    border-radius: 5px;
 }
 .my-container{
     @apply lg:mx-20 lg:px-4 mx-2 px-2 
