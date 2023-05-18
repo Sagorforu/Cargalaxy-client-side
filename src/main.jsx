@@ -12,6 +12,9 @@ import ErrorPage from './components/ErrorPage/ErrorPage';
 import SignUp from './components/SignUp/SignUp';
 import Blog from './components/Blog/Blog';
 import About from './components/About/About';
+import AllToys from './components/PrivatePages/AllToys';
+import MyToys from './components/PrivatePages/MyToys';
+import AddToys from './components/PrivatePages/AddToys';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,9 +40,21 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <About></About>
+      },
+      {
+        path: '/allToys',
+        element: <AllToys></AllToys>
+      },
+      {
+        path: '/myToys',
+        element: <MyToys></MyToys>
+      },
+      {
+        path: '/addToys',
+        element: <AddToys></AddToys>
       }
     ]
-  },
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
