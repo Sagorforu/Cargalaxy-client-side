@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import signUp from "../../assets/signUp.json";
 import { AuthContext } from "../Providers/AuthProviders";
-import { Result } from "postcss";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
   const [error, setError] = useState("");
-  const { createUser } = useContext(AuthContext);
+  const { createUser, googleUser } = useContext(AuthContext);
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -31,15 +32,28 @@ const SignUp = () => {
 
     createUser(email, password)
     .then(result => {
-        console.log(result.user)
-        alert('user coming')
+        if (result.user) {
+        toast('SignUp successful')
+        }
         event.target.reset();
     })
     .catch(error => {
         console.log(error.message)
-        setError(error)
+        toast('SignUp failed, please try again')
     })
   };
+
+  const handleGoogle = () => {
+    googleUser()
+    .then( result => {
+        console.log(result.user)
+        toast('SignUp successful')
+    })
+    .catch(error => {
+        console.log(error);
+        toast('SignUp failed, please try again')
+    })
+  }
 
   return (
     <div className=" py-10 bg-base-200">
@@ -101,7 +115,7 @@ const SignUp = () => {
                   login
                 </Link>
               </h2>
-              <button className="mt-10">
+              <button onClick={handleGoogle} className="mt-10">
                 <img
                   className="mx-auto shadow-2xl"
                   src="https://i.ibb.co/tB24MCG/google.png"
@@ -114,6 +128,7 @@ const SignUp = () => {
         <div className="mx-auto p-10">
           <Lottie className="object-cover" animationData={signUp} loop={true} />
         </div>
+        <ToastContainer />
       </div>
     </div>
   );
