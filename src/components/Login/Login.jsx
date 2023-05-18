@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import login from "../../assets/login.json";
+import { AuthContext } from "../Providers/AuthProviders";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
     const [error, setError]= useState("");
+    const { userLogin } = useContext(AuthContext);
 
     const handleLogin = event => {
         event.preventDefault();
@@ -19,7 +22,15 @@ const Login = () => {
         } else {
             setError('');
         }
-
+        userLogin(email, password)
+        .then(result => {
+            console.log(result.user)
+            toast('Login successful')
+        })
+        .catch(error => {
+            console.log(error.message)
+            setError("wrong email or password")
+        })
     }
 
   return (
@@ -71,6 +82,7 @@ const Login = () => {
               loop={true}
             />
           </div>
+          <ToastContainer />
       </div>
     </div>
   );
