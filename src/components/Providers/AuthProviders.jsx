@@ -11,12 +11,15 @@ const AuthProviders = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
     const googleUser = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
     const userLogin = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
     useEffect(()=> {
@@ -29,6 +32,7 @@ const AuthProviders = ({ children }) => {
         }
     },[]);
     const userLogOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
     const updateProfileInfo = (name, photo) => {
