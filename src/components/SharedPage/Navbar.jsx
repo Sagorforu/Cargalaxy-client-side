@@ -45,7 +45,8 @@ const Navbar = () => {
               All Toys
             </NavLink>
           </li>
-          <li className="lg:p-4 py-1 ps-3 font-semibold text-xl">
+          {
+            user ? <li className="lg:p-4 py-1 ps-3 font-semibold text-xl">
             <NavLink
               to="/myToys"
               className={({ isActive }) =>
@@ -54,8 +55,10 @@ const Navbar = () => {
             >
               My Toys
             </NavLink>
-          </li>
-          <li className="lg:p-4 py-1 ps-3 font-semibold text-xl">
+          </li> : ""
+          }
+          {
+            user ? <li className="lg:p-4 py-1 ps-3 font-semibold text-xl">
             <NavLink
               to="/addToys"
               className={({ isActive }) =>
@@ -64,7 +67,8 @@ const Navbar = () => {
             >
               Add Toys
             </NavLink>
-          </li>
+          </li> : ""
+          }
           <li className="lg:p-4 py-1 ps-3 font-semibold text-xl">
             <NavLink
               to="/about"
