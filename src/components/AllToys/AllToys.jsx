@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const AllToys = () => {
@@ -28,6 +29,8 @@ const AllToys = () => {
               <th>Sub-Category</th>
               <th>Price</th>
               <th>Quantity</th>
+              <th>Edit</th>
+              <th>Delete</th>
               <th>Details</th>
             </tr>
           </thead>
@@ -40,6 +43,16 @@ const AllToys = () => {
                 <td>{toys.subcategory}</td>
                 <td className="text-color font-bold">$ {toys.price}</td>
                 <td>{toys.quantity}</td>
+                <td>
+                  <button className="my-btn btn-color">
+                    <FaEdit />
+                  </button>
+                </td>
+                <td>
+                  <button className="my-btn btn-color">
+                    <FaTrash />
+                  </button>
+                </td>
                 <td>
                   <Link to={`/singleToy/${toys._id}`}>
                     <button className="my-btn btn-color">Details</button>
