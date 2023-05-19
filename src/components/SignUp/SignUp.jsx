@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import signUp from "../../assets/signUp.json";
 import { AuthContext } from "../Providers/AuthProviders";
@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 const SignUp = () => {
   const [error, setError] = useState("");
   const { createUser, googleUser, updateProfileInfo } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -33,6 +34,7 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         if (result.user) {
+          console.log(user);
           toast("SignUp successful");
           updateProfileInfo(name, photo).then(() => {
             toast("Profile info updated");

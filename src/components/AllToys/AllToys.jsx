@@ -1,15 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import Swal from 'sweetalert2';
 const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
 
   useEffect(() => {
-    fetch("https://car-galaxy-server.vercel.app/allCards")
+    fetch("https://car-galaxy-server.vercel.app/allToys")
       .then((res) => res.json())
       .then((data) => setAllToys(data));
   }, []);
+
+  const handleDelete = (id) => {
+    const proceed = Swal.fire({
+      title: 'Are you sure?',
+      text: 'You are about to delete this toy.',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      cancelButtonText: 'Cancel'
+    });
+    if (proceed) {
+      fetch(`https://car-galaxy-server.vercel.app/singleToy/${id}`, {
+        method: "DELETE"
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          const remaining = allToys.filter(toys => toys._id !== id);
+          setAllToys(remaining);
+          toast('Deleted Successful');
+        }
+      })
+    }
+  }
 
   return (
     <div className="lg:px-36 px-2 my-10">
@@ -29,7 +55,7 @@ const AllToys = () => {
               <th>Sub-Category</th>
               <th>Price</th>
               <th>Quantity</th>
-              <th>Edit</th>
+              <th>Update</th>
               <th>Delete</th>
               <th>Details</th>
             </tr>
@@ -49,7 +75,7 @@ const AllToys = () => {
                   </button>
                 </td>
                 <td>
-                  <button className="my-btn btn-color">
+                  <button onClick={()=>handleDelete(toys._id)} className="my-btn btn-color">
                     <FaTrash />
                   </button>
                 </td>
@@ -62,6 +88,7 @@ const AllToys = () => {
             </tbody>
           ))}
         </table>
+        <ToastContainer />
       </div>
     </div>
   );

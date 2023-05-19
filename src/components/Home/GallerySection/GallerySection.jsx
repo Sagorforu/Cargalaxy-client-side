@@ -13,7 +13,7 @@ const GallerySection = () => {
     <div className="my-12 lg:px-36 px-2">
       <div className="text-center">
         <h1 className="lg:text-5xl font-bold text-3xl text-color">
-          Gallery Section
+          Our Toys Gallery
         </h1>
       </div>
       <div className="grid lg:grid-cols-5 grid-cols-2 items-center justify-between gap-4 pt-10 ">

@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { AuthContext } from "../Providers/AuthProviders";
 
 const AddToys = () => {
   const [selectedValue, setSelectedValue] = useState("");
+  const {user} = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -10,7 +12,7 @@ const AddToys = () => {
     const toyName = form.toyName.value;
     const sellerName = form.sellerName.value;
     const photo = form.photo.value;
-    const sellerEmail = form.sellerEmail.value;
+    const sellerEmail = user?.email;
     const price = form.price.value;
     const rating = form.rating.value;
     const quantity = form.quantity.value;
@@ -83,7 +85,7 @@ const AddToys = () => {
               <input
                 className="px-3 py-4 lg:w-[520px] w-[300px] rounded-lg"
                 type="email"
-                name="sellerEmail"
+                defaultValue={user?.email}
                 placeholder="Seller Email"
               />
             </div>
