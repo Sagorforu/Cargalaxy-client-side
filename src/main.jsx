@@ -9,10 +9,10 @@ import ErrorPage from "./components/ErrorPage/ErrorPage";
 import SignUp from "./components/SignUp/SignUp";
 import Blog from "./components/Blog/Blog";
 import About from "./components/About/About";
-import AllToys from "./components/PrivatePages/AllToys";
 import MyToys from "./components/PrivatePages/MyToys";
 import AddToys from "./components/PrivatePages/AddToys";
 import AuthProviders from "./components/Providers/AuthProviders";
+import AllToys from "./components/AllToys/AllToys";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/allToys",
-        element: <AllToys></AllToys>,
+        element: <AllToys></AllToys>
       },
       {
         path: "/myToys",

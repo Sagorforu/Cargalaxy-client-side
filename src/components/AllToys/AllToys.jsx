@@ -3,7 +3,7 @@ import React from 'react';
 const AllToys = () => {
     return (
         <div>
-            this is allJobs
+            this is allToys
         </div>
     );
 };

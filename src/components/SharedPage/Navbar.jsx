@@ -3,19 +3,18 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
 
 const Navbar = () => {
-    const { user, userLogOut } = useContext(AuthContext);
-    const navigate = useNavigate();
-    
-    const handleLogOut = () => {
-      userLogOut()
-      .then(()=> {
-        navigate('/');
-      })
-      .catch(error => {
-        console.log(error)
-      })
-    }
+  const { user, userLogOut } = useContext(AuthContext);
+  const navigate = useNavigate();
 
+  const handleLogOut = () => {
+    userLogOut()
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
@@ -90,17 +89,15 @@ const Navbar = () => {
         <div className="flex gap-4 items-center justify-center">
           {user ? (
             <div className="flex gap-4 items-center">
-              <Link
-                className="text-4xl"
-                title={user.displayName}
-                to="userdetails"
-              >
+              <Link className="text-4xl">
                 {user.photoURL ? (
-                  <img
-                    className="w-10 mask mask-circle"
-                    src={user.photoURL}
-                    alt=""
-                  />
+                  <div className="tooltip" data-tip={user.displayName}>
+                    <img
+                      className="w-10 mask mask-circle tooltip"
+                      src={user.photoURL}
+                      alt=""
+                    />
+                  </div>
                 ) : (
                   <img
                     className="w-10 mask mask-circle"
