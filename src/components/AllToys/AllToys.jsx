@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const AllToys = () => {
     const [allToys, setAllToys] = useState([]);
-  console.log(allToys)
 
   useEffect(() => {
     fetch("https://car-galaxy-server.vercel.app/allCards")
@@ -32,7 +32,7 @@ const AllToys = () => {
             </tr>
           </thead>
           {
-            allToys.map((toys, index) => <tbody>
+            allToys.map((toys, index) => <tbody key={toys._id}>
             <tr>
               <th>{index + 1}</th>
               <td>{toys.sellerName}</td>
@@ -40,7 +40,7 @@ const AllToys = () => {
               <td>{toys.subcategory}</td>
               <td className="text-color font-bold">$ {toys.price}</td>
               <td>{toys.quantity}</td>
-              <td><button className="my-btn btn-color">Details</button></td>
+              <td><Link to={`/singleToy/${toys._id}`}><button className="my-btn btn-color">Details</button></Link></td>
             </tr>
           </tbody>)
         }
