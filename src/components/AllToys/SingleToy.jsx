@@ -1,11 +1,12 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
 
 const SingleToy = () => {
   const singleData = useLoaderData();
 
   const {
-    _id,
     Picture,
     description,
     price,
@@ -13,7 +14,6 @@ const SingleToy = () => {
     rating,
     sellerEmail,
     sellerName,
-    subCategory,
     toyName,
   } = singleData;
 
@@ -40,9 +40,15 @@ const SingleToy = () => {
           </div>
           <div className="shadow-xl p-12 py-20 mt-5 rounded-xl background-color space-y-4">
             <h1 className="text-xl text-[#383838] font-semibold">Price: ${price}</h1>
+            <div className="flex gap-4">
             <h1 className="text-xl text-[#383838] font-semibold">
               Rating: {rating}
-            </h1>
+            </h1> <Rating
+      style={{ maxWidth: 110 }}
+      value={rating}
+      readOnly
+    />
+            </div>
             <h1 className="text-xl text-[#383838] font-semibold">
               Quantity: {quantity}
             </h1>
