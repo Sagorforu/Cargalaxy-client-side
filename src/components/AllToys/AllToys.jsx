@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const AllToys = () => {
-    const [allToys, setAllToys] = useState([]);
+  const [allToys, setAllToys] = useState([]);
 
   useEffect(() => {
     fetch("https://car-galaxy-server.vercel.app/allCards")
@@ -18,7 +18,7 @@ const AllToys = () => {
         </h1>
       </div>
       <div>
-      <table className="table w-full my-10">
+        <table className="table w-full my-10">
           {/* head*/}
           <thead>
             <tr>
@@ -31,21 +31,24 @@ const AllToys = () => {
               <th>Details</th>
             </tr>
           </thead>
-          {
-            allToys.map((toys, index) => <tbody key={toys._id}>
-            <tr>
-              <th>{index + 1}</th>
-              <td>{toys.sellerName}</td>
-              <td className="text-color font-bold">{toys.toyName}</td>
-              <td>{toys.subcategory}</td>
-              <td className="text-color font-bold">$ {toys.price}</td>
-              <td>{toys.quantity}</td>
-              <td><Link to={`/singleToy/${toys._id}`}><button className="my-btn btn-color">Details</button></Link></td>
-            </tr>
-          </tbody>)
-        }
+          {allToys.map((toys, index) => (
+            <tbody key={toys._id}>
+              <tr>
+                <th>{index + 1}</th>
+                <td>{toys.sellerName}</td>
+                <td className="text-color font-bold">{toys.toyName}</td>
+                <td>{toys.subcategory}</td>
+                <td className="text-color font-bold">$ {toys.price}</td>
+                <td>{toys.quantity}</td>
+                <td>
+                  <Link to={`/singleToy/${toys._id}`}>
+                    <button className="my-btn btn-color">Details</button>
+                  </Link>
+                </td>
+              </tr>
+            </tbody>
+          ))}
         </table>
-        
       </div>
     </div>
   );
