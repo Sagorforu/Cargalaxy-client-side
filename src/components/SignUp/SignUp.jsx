@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
   const [error, setError] = useState("");
-  const { createUser, googleUser } = useContext(AuthContext);
+  const { createUser, googleUser,updateProfileInfo } = useContext(AuthContext);
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -34,6 +34,10 @@ const SignUp = () => {
     .then(result => {
         if (result.user) {
         toast('SignUp successful')
+        updateProfileInfo(name, photo)
+        .then(()=> {
+          toast('Profile info updated')
+        })
         }
         event.target.reset();
     })

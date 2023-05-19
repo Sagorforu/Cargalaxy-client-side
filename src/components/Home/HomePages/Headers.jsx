@@ -31,7 +31,7 @@ const Headers = () => {
           </Link>
         </div>
         <div>
-          <img src="https://i.ibb.co/nzgfC0S/car8.png" alt="" />
+          <img className="shadow-xl" src="https://i.ibb.co/nzgfC0S/car8.png" alt="" />
         </div>
       </div>
     </div>
