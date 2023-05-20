@@ -38,7 +38,7 @@ const UpdateToys = () => {
       subcategory: selectedValue,
     };
     // update toy
-    fetch(`https://car-galaxy-server.vercel.app/singleToy/${_id}`, {
+    fetch(`http://localhost:5000/singleToy/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -6,7 +6,7 @@ const ToyCards = () => {
   console.log(toys)
 
   useEffect(() => {
-    fetch("https://car-galaxy-server.vercel.app/allCards")
+    fetch("http://localhost:5000/allCards")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);

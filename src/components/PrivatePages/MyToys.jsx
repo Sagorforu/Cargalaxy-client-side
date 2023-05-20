@@ -7,10 +7,10 @@ import Swal from "sweetalert2";
 
 const MyToys = () => {
   const [allToys, setAllToys] = useState([]);
-  const { user } = useContext(AuthContext);
+  const { user  } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`https://car-galaxy-server.vercel.app/myToys/${user?.email}`)
+    fetch(`http://localhost:5000/myToys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setAllToys(data));
   }, [user]);
@@ -25,7 +25,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://car-galaxy-server.vercel.app/singleToy/${id}`, {
+        fetch(`http://localhost:5000/singleToy/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -41,6 +41,12 @@ const MyToys = () => {
     });
   };
 
+  const handleLowToHigh = () =>{
+    fetch(`http://localhost:5000/lowToHigh/${user?.email}?value=${value}&type=${type}`)
+    .then(res => res.json())
+    .then(data => setAllToys(data))
+  }
+
   return (
     <div className="lg:px-36 px-2 my-10">
       <div className="text-center">
@@ -48,6 +54,22 @@ const MyToys = () => {
           My Toys Collection
         </h1>
       </div>
+      <div class="flex items-center justify-end mt-10 font-bold mr-16">
+        <label for="sort-price" class="mr-2">
+          Sort by Price:
+        </label>
+        <select id="sort-price" class="px-4 py-2 border rounded">
+          <option onClick={handleLowToHigh} value="asc">Low to High</option>
+          <option value="desc">High to Low</option>
+        </select>
+      </div>
+      {/* <select className="select w-full max-w-xs">
+        <option  selected>
+          Sort By Price
+        </option>
+        <option>Highest to Lowest</option>
+        <option>Lowest to Highest</option>
+      </select> */}
       <div>
         <table className="table w-full my-10">
           {/* head*/}

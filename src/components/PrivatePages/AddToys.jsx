@@ -28,7 +28,7 @@ const AddToys = () => {
       description: description,
       subcategory: selectedValue,
     };
-    fetch('https://car-galaxy-server.vercel.app/addToy', {
+    fetch('http://localhost:5000/addToy', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'

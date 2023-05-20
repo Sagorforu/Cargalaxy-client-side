@@ -8,7 +8,7 @@ const TabCategory = () => {
   const [activeTab, setActiveTab] = useState("");
 
   useEffect(() => {
-    fetch("https://car-galaxy-server.vercel.app/allToys")
+    fetch("http://localhost:5000/allToys")
       .then((res) => res.json())
       .then((data) => {
         const cateGoryByFilter = data?.filter(
@@ -19,7 +19,7 @@ const TabCategory = () => {
   }, [activeTab]);
 
   useEffect(()=>{
-    fetch("https://car-galaxy-server.vercel.app/allToys")
+    fetch("http://localhost:5000/allToys")
     .then((res) => res.json())
     .then((data) => setToys(data))
   },[]);
