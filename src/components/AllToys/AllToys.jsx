@@ -2,12 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
+  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
     fetch("https://car-galaxy-server.vercel.app/allToys")
       .then((res) => res.json())
       .then((data) => setAllToys(data));
   }, []);
+
+  const handleSearch = () => {
+    fetch(`http://localhost:5000/searchByToyName/${searchText}`)
+    .then(res => res.json())
+    .then(data => {
+      setAllToys(data)
+    })
+  }
 
   return (
     <div className="lg:px-36 px-2 my-10">
@@ -16,8 +25,18 @@ const AllToys = () => {
           Our All Toys Collection
         </h1>
       </div>
+      <div className="mt-10 mb-4 text-center background-color py-20 rounded-lg">
+        <input
+          onChange={(e) => setSearchText(e.target.value)}
+          className="px-3 py-4 shadow-xl lg:w-[520px] w-[350px] rounded-lg"
+          type="text"
+          name="sellerName"
+          placeholder="Search here"
+        /> <br />
+        <button onClick={handleSearch} className="my-btn btn-color shadow-xl mt-5">Search</button>
+      </div>
       <div>
-        <table className="table w-full my-10 overflow-y-scroll">
+        <table className="table w-full mb-10 overflow-y-scroll">
           {/* head*/}
           <thead>
             <tr>
