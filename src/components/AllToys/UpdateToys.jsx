@@ -5,7 +5,7 @@ import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateToys = () => {
-    const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState("");
   const { user } = useContext(AuthContext);
   const toys = useLoaderData();
   const {
@@ -71,50 +71,7 @@ const UpdateToys = () => {
       </div>
       <form onSubmit={handleUpdate}>
         <div className="lg:px-36 px-2">
-          <div className="lg:flex justify-around text-center">
-            <div className="mb-3">
-              <h2 className="font-medium text-lg mb-2">Toy Name</h2>
-              <input
-                className="px-3 py-4 lg:w-[520px] w-[300px] rounded-lg"
-                type="text"
-                name="toyName"
-                placeholder="Toy name"
-                defaultValue={toyName}
-              />
-            </div>
-            <div className="mb-3">
-              <h2 className="font-medium text-lg mb-2">Seller Name</h2>
-              <input
-                className="px-3 py-4 lg:w-[520px] w-[300px] rounded-lg"
-                type="text"
-                name="sellerName"
-                placeholder="Seller name"
-                defaultValue={sellerName}
-              />
-            </div>
-          </div>
-          <div className="lg:flex justify-around text-center">
-            <div className="mb-3">
-              <h2 className="font-medium text-lg mb-2">Toy Photo URL</h2>
-              <input
-                className="px-3 py-4 lg:w-[520px] w-[300px] rounded-lg"
-                type="text"
-                name="photo"
-                placeholder="Toy photo URL"
-                defaultValue={Picture}
-              />
-            </div>
-            <div className="mb-3">
-              <h2 className="font-medium text-lg mb-2">Seller Email</h2>
-              <input
-                className="px-3 py-4 lg:w-[520px] w-[300px] rounded-lg"
-                type="email"
-                defaultValue={user?.email}
-                placeholder="Seller Email"
-              />
-            </div>
-          </div>
-          <div className="lg:flex justify-around text-center">
+          <div className="text-center">
             <div className="mb-3">
               <h2 className="font-medium text-lg mb-2">Toy Price</h2>
               <input
@@ -126,18 +83,6 @@ const UpdateToys = () => {
               />
             </div>
             <div className="mb-3">
-              <h2 className="font-medium text-lg mb-2">Ratings</h2>
-              <input
-                className="px-3 py-4 lg:w-[520px] w-[300px] rounded-lg"
-                type="text"
-                name="rating"
-                placeholder="Ratings"
-                defaultValue={rating}
-              />
-            </div>
-          </div>
-          <div className="lg:flex justify-around text-center">
-            <div className="mb-3">
               <h2 className="font-medium text-lg mb-2">Available Quantity</h2>
               <input
                 className="px-3 py-4 lg:w-[520px] w-[300px] rounded-lg"
@@ -146,18 +91,6 @@ const UpdateToys = () => {
                 placeholder="Available Quantity"
                 defaultValue={quantity}
               />
-            </div>
-            <div className="mb-3">
-              <h2 className="font-medium text-lg mb-2">Category</h2>
-              <select
-                onChange={(event) => setSelectedValue(event.target.value)}
-                className=" px-3 py-4 lg:w-[520px] w-[300px] rounded-lg"
-              >
-                <option defaultValue={subCategory}>Select Category</option>
-                <option value="truck ">Truck</option>
-                <option value="policeCar">Police Car</option>
-                <option value="stylishCar">Stylish Car</option>
-              </select>
             </div>
           </div>
           <div className="mb-3 text-center">

@@ -17,7 +17,7 @@ const AllToys = () => {
         </h1>
       </div>
       <div>
-        <table className="table w-full my-10">
+        <table className="table w-full my-10 overflow-y-scroll">
           {/* head*/}
           <thead>
             <tr>

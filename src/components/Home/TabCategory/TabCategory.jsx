@@ -1,0 +1,63 @@
+import React, { useEffect, useState } from "react";
+import "react-tabs/style/react-tabs.css";
+import "react-table-6/react-table.css";
+import Toy from "./Toy";
+
+const TabCategory = () => {
+  const [toys, setToys] = useState([]);
+  const [activeTab, setActiveTab] = useState("truck");
+  console.log(toys)
+  useEffect(() => {
+    fetch("https://car-galaxy-server.vercel.app/allToys")
+      .then((res) => res.json())
+      .then((data) => setToys(data));
+  }, []);
+
+  const handleTab = (tabName) => {
+    setActiveTab(tabName);
+  };
+
+  return (
+    <div className="my-16 lg:px-36 px-2">
+      <div className="text-center">
+        <h1 className="lg:text-5xl font-bold text-3xl text-color">
+          Our Best Toys
+        </h1>
+      </div>
+      <div className="text-center mt-12 text-2xl font-bold">
+        Filter By Category
+      </div>
+      <div className="text-center my-10">
+        <div className="text-center">
+          <button
+            onClick={() => handleTab("truck")}
+            className={`${activeTab == "truck" ? "toy-btn mx-4 btn-color" : "mx-4 my-btn btn-color"}`}
+          >
+            Truck
+          </button>
+          <button
+            onClick={() => handleTab("policeCar")}
+            className={`${activeTab == "policeCar" ? "toy-btn mx-4 btn-color" : "mx-4 my-btn btn-color"}`}
+          >
+            Police Car
+          </button>
+          <button
+            onClick={() => handleTab("stylishCar")}
+            className={`${
+              activeTab == "stylishCar" ? "toy-btn mx-4 btn-color" : "mx-4 my-btn btn-color"
+            }`}
+          >
+            Stylish Car
+          </button>
+          <div className="grid lg:grid-cols-3 lg:gap-8 gap-3 items-center justify-center">
+            {
+              toys.map(toy => <Toy key={toy._id} toy={toy}></Toy>)
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TabCategory;
