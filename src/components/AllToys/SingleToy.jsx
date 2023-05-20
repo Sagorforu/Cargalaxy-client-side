@@ -2,10 +2,11 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import useTitle from "../../hook/useTitle";
 
 const SingleToy = () => {
   const singleData = useLoaderData();
-
+  useTitle("Toy Details")
   const {
     Picture,
     description,

@@ -4,10 +4,12 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
+import useTitle from "../../hook/useTitle";
 
 const MyToys = () => {
   const [allToys, setAllToys] = useState([]);
   const { user  } = useContext(AuthContext);
+  useTitle("MyToys")
 
   useEffect(() => {
     fetch(`http://localhost:5000/myToys/${user?.email}`)

@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../Providers/AuthProviders";
+import useTitle from "../../hook/useTitle";
 
 const AddToys = () => {
   const [selectedValue, setSelectedValue] = useState("");
   const {user} = useContext(AuthContext);
+  useTitle("AddToys")
 
   const handleSubmit = (event) => {
     event.preventDefault();

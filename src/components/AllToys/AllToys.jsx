@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
 import { ColorRing } from "react-loader-spinner";
+import useTitle from "../../hook/useTitle";
 
 const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
   const [searchText, setSearchText] = useState("");
   const { loading } = useContext(AuthContext);
+  useTitle("AllToys")
 
   useEffect(() => {
     fetch("http://localhost:5000/allToys")

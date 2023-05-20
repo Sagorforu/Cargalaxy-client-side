@@ -5,11 +5,13 @@ import signUp from "../../assets/signUp.json";
 import { AuthContext } from "../Providers/AuthProviders";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useTitle from "../../hook/useTitle";
 
 const SignUp = () => {
   const [error, setError] = useState("");
   const { createUser, googleUser, updateProfileInfo } = useContext(AuthContext);
   const navigate = useNavigate();
+  useTitle("SignUp")
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -54,6 +56,7 @@ const SignUp = () => {
       .then((result) => {
         console.log(result.user);
         toast("SignUp successful");
+        navigate('/');
       })
       .catch((error) => {
         console.log(error);

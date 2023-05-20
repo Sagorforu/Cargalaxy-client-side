@@ -3,6 +3,7 @@ import { AuthContext } from "../Providers/AuthProviders";
 import { ToastContainer } from "react-toastify";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import useTitle from "../../hook/useTitle";
 
 const UpdateToys = () => {
   const [selectedValue] = useState("");
@@ -14,6 +15,8 @@ const UpdateToys = () => {
     price,
     quantity
   } = toys;
+  useTitle("UpdateToys")
+
 
   const handleUpdate = (event, id) => {
     event.preventDefault();

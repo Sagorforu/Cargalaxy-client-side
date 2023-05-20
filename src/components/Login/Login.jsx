@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import login from "../../assets/login.json";
 import { AuthContext } from "../Providers/AuthProviders";
 import { ToastContainer, toast } from "react-toastify";
+import useTitle from "../../hook/useTitle";
 
 const Login = () => {
     const [error, setError]= useState("");
@@ -11,6 +12,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
+    useTitle("Login")
 
     const handleLogin = event => {
         event.preventDefault();
