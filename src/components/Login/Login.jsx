@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import login from "../../assets/login.json";
 import { AuthContext } from "../Providers/AuthProviders";
@@ -8,6 +8,9 @@ import { ToastContainer, toast } from "react-toastify";
 const Login = () => {
     const [error, setError]= useState("");
     const { userLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = event => {
         event.preventDefault();
@@ -26,6 +29,7 @@ const Login = () => {
         .then(result => {
             console.log(result.user)
             toast('Login successful')
+            navigate(from, { replace: true })
         })
         .catch(error => {
             console.log(error.message)

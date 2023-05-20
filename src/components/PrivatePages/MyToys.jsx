@@ -3,11 +3,11 @@ import { AuthContext } from "../Providers/AuthProviders";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 const MyToys = () => {
-    const [allToys, setAllToys] = useState([]);
-    const { user } = useContext(AuthContext);
+  const [allToys, setAllToys] = useState([]);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     fetch(`https://car-galaxy-server.vercel.app/myToys/${user?.email}`)
@@ -16,29 +16,31 @@ const MyToys = () => {
   }, [user]);
 
   const handleDelete = (id) => {
-    const proceed = Swal.fire({
-      title: 'Are you sure?',
-      text: 'You are about to delete this toy.',
-      icon: 'question',
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "question",
       showCancelButton: true,
-      confirmButtonText: 'Delete',
-      cancelButtonText: 'Cancel'
+      confirmButtonColor: "#01cec4",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://car-galaxy-server.vercel.app/singleToy/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              console.log(data)
+              const remaining = allToys.filter((toys) => toys._id !== id);
+              setAllToys(remaining);
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
     });
-    if (proceed) {
-      fetch(`https://car-galaxy-server.vercel.app/singleToy/${id}`, {
-        method: "DELETE"
-      })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if (data.deletedCount > 0) {
-          const remaining = allToys.filter(toys => toys._id !== id);
-          setAllToys(remaining);
-          toast('Deleted Successful');
-        }
-      })
-    }
-  }
+  };
 
   return (
     <div className="lg:px-36 px-2 my-10">

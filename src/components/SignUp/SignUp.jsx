@@ -36,6 +36,7 @@ const SignUp = () => {
         if (result.user) {
           console.log(user);
           toast("SignUp successful");
+          navigate('/')
           updateProfileInfo(name, photo).then(() => {
             toast("Profile info updated");
           });
