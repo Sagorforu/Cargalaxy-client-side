@@ -21,24 +21,13 @@ const UpdateToys = () => {
   const handleUpdate = (event, id) => {
     event.preventDefault();
     const form = event.target;
-    const toyName = form.toyName.value;
-    const sellerName = form.sellerName.value;
-    const photo = form.photo.value;
-    const sellerEmail = user?.email;
     const price = form.price.value;
-    const rating = form.rating.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
     const toyData = {
-      toyName: toyName,
-      sellerName: sellerName,
-      sellerEmail: sellerEmail,
-      Picture: photo,
       price: price,
-      rating: rating,
       quantity: quantity,
       description: description,
-      subcategory: selectedValue,
     };
     // update toy
     fetch(`http://localhost:5000/singleToy/${_id}`, {

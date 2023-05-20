@@ -56,11 +56,11 @@ const MyToys = () => {
           My Toys Collection
         </h1>
       </div>
-      <div class="flex items-center justify-end mt-10 font-bold mr-16">
-        <label for="sort-price" class="mr-2">
+      <div className="flex items-center justify-end mt-10 font-bold mr-16">
+        <label  className="mr-2">
           Sort by Price:
         </label>
-        <select id="sort-price" class="px-4 py-2 border rounded">
+        <select id="sort-price" className="px-4 py-2 border rounded">
           <option onClick={handleLowToHigh} value="asc">Low to High</option>
           <option value="desc">High to Low</option>
         </select>
