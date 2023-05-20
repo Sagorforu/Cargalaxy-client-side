@@ -5,13 +5,24 @@ import Toy from "./Toy";
 
 const TabCategory = () => {
   const [toys, setToys] = useState([]);
-  const [activeTab, setActiveTab] = useState("truck");
-  console.log(toys)
+  const [activeTab, setActiveTab] = useState("");
+
   useEffect(() => {
     fetch("https://car-galaxy-server.vercel.app/allToys")
       .then((res) => res.json())
-      .then((data) => setToys(data));
-  }, []);
+      .then((data) => {
+        const cateGoryByFilter = data?.filter(
+          (toy) => toy.subcategory == activeTab
+        );
+        setToys(cateGoryByFilter);
+      });
+  }, [activeTab]);
+
+  useEffect(()=>{
+    fetch("https://car-galaxy-server.vercel.app/allToys")
+    .then((res) => res.json())
+    .then((data) => setToys(data))
+  },[]);
 
   const handleTab = (tabName) => {
     setActiveTab(tabName);
@@ -28,31 +39,41 @@ const TabCategory = () => {
         Filter By Category
       </div>
       <div className="text-center my-10">
-        <div className="text-center">
+        <div className="text-center ">
           <button
             onClick={() => handleTab("truck")}
-            className={`${activeTab == "truck" ? "toy-btn mx-4 btn-color" : "mx-4 my-btn btn-color"}`}
+            className={`${
+              activeTab == "truck"
+                ? "toy-btn mx-4 mb-5 btn-color"
+                : "mx-4 my-btn btn-color"
+            }`}
           >
             Truck
           </button>
           <button
             onClick={() => handleTab("policeCar")}
-            className={`${activeTab == "policeCar" ? "toy-btn mx-4 btn-color" : "mx-4 my-btn btn-color"}`}
+            className={`${
+              activeTab == "policeCar"
+                ? "toy-btn mx-4 mb-5 btn-color"
+                : "mx-4 my-btn btn-color"
+            }`}
           >
-            Police Car
+            Police
           </button>
           <button
             onClick={() => handleTab("stylishCar")}
             className={`${
-              activeTab == "stylishCar" ? "toy-btn mx-4 btn-color" : "mx-4 my-btn btn-color"
+              activeTab == "stylishCar"
+                ? "toy-btn mx-4 mb-5 btn-color"
+                : "mx-4 my-btn btn-color"
             }`}
           >
-            Stylish Car
+            Stylish
           </button>
           <div className="grid lg:grid-cols-3 lg:gap-8 gap-3 items-center justify-center">
-            {
-              toys.map(toy => <Toy key={toy._id} toy={toy}></Toy>)
-            }
+            {toys.map((toy) => (
+              <Toy key={toy._id} toy={toy}></Toy>
+            ))}
           </div>
         </div>
       </div>
