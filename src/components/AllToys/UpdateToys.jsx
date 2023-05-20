@@ -5,19 +5,14 @@ import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateToys = () => {
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue] = useState("");
   const { user } = useContext(AuthContext);
   const toys = useLoaderData();
   const {
     _id,
-    toyName,
-    sellerName,
-    Picture,
     description,
     price,
-    quantity,
-    rating,
-    subCategory,
+    quantity
   } = toys;
 
   const handleUpdate = (event, id) => {

@@ -1,13 +1,18 @@
+import { Rating } from "@smastrom/react-rating";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const Toy = ({ toy }) => {
-  const { Picture, toyName, price, rating, subcategory } = toy || {};
+  const { _id, Picture, toyName, price, rating, subcategory } = toy || {};
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       {Picture ? (
         <figure>
-          <img src={Picture} alt="toy car" className="p-5 w-96 pt-5 h-96 rounded-xl" />
+          <img
+            src={Picture}
+            alt="toy car"
+            className="p-5 w-96 pt-5 h-96 rounded-xl"
+          />
         </figure>
       ) : (
         <p>Picture not available</p>
@@ -19,10 +24,12 @@ const Toy = ({ toy }) => {
             {subcategory}
           </div>
         </h2>
-        <p className="font-bold">Price:  ${price}</p>
-        <p className="font-bold">Rating: {rating}</p>
-        <Link>
-          <button className="my-btn btn-color my-10">View Details</button>
+        <p className="font-bold">Price: ${price}</p>
+        <div className="flex items-center justify-center">
+        <p className="font-bold">Rating: {rating}</p><Rating style={{ maxWidth: 110 }} value={rating} readOnly />
+        </div>
+        <Link to={`/singleToy/${_id}`}>
+          <button className="my-btn btn-color my-8">View Details</button>
         </Link>
       </div>
     </div>

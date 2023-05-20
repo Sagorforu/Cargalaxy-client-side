@@ -35,9 +35,9 @@ const AllToys = () => {
               <tr>
                 <th>{index + 1}</th>
                 <td>{toys.sellerName}</td>
-                <td className="text-color font-bold">{toys.toyName}</td>
+                <td className="text-color font-bold mt-2">{toys.toyName}</td>
                 <td>{toys.subcategory}</td>
-                <td className="text-color font-bold">$ {toys.price}</td>
+                <td className="text-color font-bold mt-2">$ {toys.price}</td>
                 <td>{toys.quantity}</td>
                 <td>
                   <Link to={`/singleToy/${toys._id}`}>

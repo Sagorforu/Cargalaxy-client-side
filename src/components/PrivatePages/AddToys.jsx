@@ -127,7 +127,7 @@ const AddToys = () => {
                 className=" px-3 py-4 lg:w-[520px] w-[300px] rounded-lg"
               >
                 <option value="">Select Category</option>
-                <option value="truck ">Truck</option>
+                <option value="truck">Truck</option>
                 <option value="policeCar">Police Car</option>
                 <option value="stylishCar">Stylish Car</option>
               </select>
