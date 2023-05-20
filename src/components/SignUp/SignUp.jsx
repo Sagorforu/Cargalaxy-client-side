@@ -34,7 +34,7 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         if (result.user) {
-          console.log(user);
+          console.log(result.user);
           toast("SignUp successful");
           navigate('/')
           updateProfileInfo(name, photo).then(() => {

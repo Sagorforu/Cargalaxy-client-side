@@ -14,7 +14,6 @@ const MyToys = () => {
       .then((res) => res.json())
       .then((data) => setAllToys(data));
   }, [user]);
-
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -32,10 +31,10 @@ const MyToys = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              console.log(data)
+              console.log(data);
               const remaining = allToys.filter((toys) => toys._id !== id);
               setAllToys(remaining);
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              Swal.fire("Deleted!", "Your toy has been deleted.", "success");
             }
           });
       }
@@ -75,9 +74,11 @@ const MyToys = () => {
                 <td className="text-color mt-3 font-bold">$ {toys.price}</td>
                 <td>{toys.quantity}</td>
                 <td>
-                  <button className="my-btn btn-color">
-                    <FaEdit />
-                  </button>
+                  <Link to={`/updateToy/${toys._id}`}>
+                    <button className="my-btn btn-color">
+                      <FaEdit />
+                    </button>
+                  </Link>
                 </td>
                 <td>
                   <button

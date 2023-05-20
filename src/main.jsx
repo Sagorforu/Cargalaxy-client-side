@@ -15,6 +15,7 @@ import AuthProviders from "./components/Providers/AuthProviders";
 import AllToys from "./components/AllToys/AllToys";
 import SingleToy from "./components/AllToys/SingleToy";
 import PrivateRoute from "./components/Routes/PrivateRoute";
+import UpdateToys from "./components/AllToys/UpdateToys";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -58,6 +59,11 @@ const router = createBrowserRouter([
         path: "/addToys",
         element: <PrivateRoute><AddToys></AddToys></PrivateRoute>,
       },
+      {
+        path: '/updateToy/:id',
+        element: <UpdateToys></UpdateToys>,
+        loader: ({params}) => fetch(`https://car-galaxy-server.vercel.app/singleToy/${params.id}`)
+      }
     ],
   },
 ]);
