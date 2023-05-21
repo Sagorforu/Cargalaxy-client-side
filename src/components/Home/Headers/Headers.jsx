@@ -36,7 +36,7 @@ const Headers = () => {
         </div>
         <div data-aos="zoom-in-left" data-aos-duration="1000">
           <img
-            className="shadow-lg hover:shadow-xl"
+            className="shadow-lg w-96 lg:w-full hover:shadow-xl"
             src="https://i.ibb.co/nzgfC0S/car8.png"
             alt=""
           />

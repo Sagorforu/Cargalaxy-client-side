@@ -8,7 +8,7 @@ const Footer = () => {
       <footer className="footer py-4 lg:px-36 px-2 border-t bg-base-200 text-base-content border-base-300 rounded-lg ">
         <div className="items-center grid-flow-col">
           <Link to="/">
-            <h2 className="active font-bold text-5xl">
+            <h2 className="active font-bold text-3xl lg:text-5xl">
               Car<span className="active">Galaxy</span>
             </h2>
           </Link>
