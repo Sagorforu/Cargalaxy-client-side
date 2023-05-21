@@ -10,14 +10,15 @@ const MyToys = () => {
   const [allToys, setAllToys] = useState([]);
   const { user } = useContext(AuthContext);
   useTitle("MyToys");
-  const [activeTab, setActiveTab] = useState("");
-
+  const [sort , setSort ] = useState("");
+  console.log(sort)
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myToys/${user?.email}`)
+    fetch(`https://car-galaxy-server.vercel.app/myToys/${user?.email}?sort=${sort}`)
       .then((res) => res.json())
       .then((data) => setAllToys(data));
-  }, [user]);
+  }, [user,sort]);
+
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -29,7 +30,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/singleToy/${id}`, {
+        fetch(`https://car-galaxy-server.vercel.app/singleToy/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -45,18 +46,6 @@ const MyToys = () => {
     });
   };
 
-  useEffect(()=>{
-    fetch(`http://localhost:5000/lowToHigh/${user?.email}`)
-    .then(res => res.json())
-    .then((data) => {
-      setAllToys(data);
-    });
-  },[activeTab])
-
-  const handleSort = (tabName) => {
-    setActiveTab(tabName);
-  };
-
   return (
     <div className="lg:px-36 px-2 my-10">
       <div className="text-center">
@@ -65,26 +54,21 @@ const MyToys = () => {
         </h1>
       </div>
       <div className="flex items-center justify-end mt-10 font-bold mr-16">
-        {/* <label  className="mr-2">
-          Sort by Price:
-        </label> */}
-        <div id="sort-price" className="px-4 py-2 border rounded">
+        <select id="sort-price" className="px-4 py-2 border rounded">
           <option value="">Sort By</option>
-          <button
-            onClick={() => handleSort("lowToHigh")}
-            className={`${activeTab == "lowToHigh" ? "text-color mr-2" : "mr-2"}`}
+          <option
+            onClick={() => setSort("asc")}
             value="asc"
           >
             Low to High
-          </button>
-          <button
-            onClick={() => handleSort("highToLow")}
-            className={`${activeTab == "highToLow" ? "text-color mx-2" : "mx-2"}`}
+          </option>
+          <option
+            onClick={() => setSort("desc")}
             value="desc"
           >
             High to Low
-          </button>
-        </div>
+          </option>
+        </select>
       </div>
       <div>
         <table className="table w-full my-10">

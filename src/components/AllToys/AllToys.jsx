@@ -11,7 +11,7 @@ const AllToys = () => {
   useTitle("AllToys")
 
   useEffect(() => {
-    fetch("http://localhost:5000/allToys")
+    fetch("https://car-galaxy-server.vercel.app/allToys")
       .then((res) => res.json())
       .then((data) => {
         setAllToys(data);
@@ -35,7 +35,7 @@ const AllToys = () => {
   }
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/searchByToyName/${searchText}`)
+    fetch(`https://car-galaxy-server.vercel.app/searchByToyName/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         setAllToys(data);

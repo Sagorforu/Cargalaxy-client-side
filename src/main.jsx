@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       {
         path: "/singleToy/:id",
         element: <PrivateRoute><SingleToy></SingleToy></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/singleToy/${params.id}`)
+        loader: ({params}) => fetch(`https://car-galaxy-server.vercel.app/singleToy/${params.id}`)
       },
       {
         path: "/myToys",
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
       {
         path: '/updateToy/:id',
         element: <UpdateToys></UpdateToys>,
-        loader: ({params}) => fetch(`http://localhost:5000/singleToy/${params.id}`)
+        loader: ({params}) => fetch(`https://car-galaxy-server.vercel.app/singleToy/${params.id}`)
       }
     ],
   },
