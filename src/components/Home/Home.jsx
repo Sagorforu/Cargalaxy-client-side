@@ -5,6 +5,7 @@ import TabCategory from './TabCategory/TabCategory';
 import useTitle from '../../hook/useTitle';
 import ChoseUs from './ChoseUs/ChoseUs';
 import Partners from './Partners/Partners';
+import ContactUs from './ContactUs/ContactUs';
 
 const Home = () => {
     useTitle('Home')
@@ -16,6 +17,7 @@ const Home = () => {
             <TabCategory></TabCategory>
             <ChoseUs></ChoseUs>
             <Partners></Partners>
+            <ContactUs></ContactUs>
         </div>
     );
 };

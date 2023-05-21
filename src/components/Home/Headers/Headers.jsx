@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 const Headers = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-gradient-to-r from-[#011f1d] to-[#2cfff4] bg-cover bg-center">
-      <div className="grid lg:grid-cols-2 items-center gap-10 lg:px-36 px-2">
+      <div className="grid lg:grid-cols-2 items-center gap-10 lg:px-36 px-4">
         <div
           data-aos="zoom-in-right"
           data-aos-duration="1000"
           className="text-white text-center"
         >
           <div>
-            <h1 className="text-4xl md:text-6xl text-start font-bold mb-6 font-mono">
+            <h1 className="text-3xl md:text-6xl text-start font-bold mb-6 font-mono">
               EXPLORE AND <br />{" "}
               <span className="font-mono">DISCOVER MORE</span> <br />{" "}
               <span className="text-[#01cec4] shadow-xl">AMAZING TOYS</span>

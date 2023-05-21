@@ -14,14 +14,14 @@ const Toy = ({ toy }) => {
     <div
       data-aos="flip-right"
       data-aos-duration="1000"
-      className="card w-96 bg-base-100 shadow-lg hover:shadow-2xl"
+      className="card lg:w-96 w-80 bg-base-100 shadow-lg hover:shadow-2xl"
     >
       {Picture ? (
         <figure>
           <img
             src={Picture}
             alt="toy car"
-            className="p-5 w-96 pt-5 h-96 rounded-xl"
+            className="p-5 lg:w-96 w-80 pt-5 h-80 lg:h-96 rounded-xl"
           />
         </figure>
       ) : (

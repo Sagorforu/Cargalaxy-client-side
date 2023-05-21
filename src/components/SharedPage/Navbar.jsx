@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
+import { FaCartPlus } from "react-icons/fa";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, userLogOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -45,30 +47,34 @@ const Navbar = () => {
               All Toys
             </NavLink>
           </li>
-          {
-            user ? <li className="lg:p-4 py-1 ps-3 font-semibold text-xl">
-            <NavLink
-              to="/myToys"
-              className={({ isActive }) =>
-                isActive ? "active" : "text-[#383838]"
-              }
-            >
-              My Toys
-            </NavLink>
-          </li> : ""
-          }
-          {
-            user ? <li className="lg:p-4 py-1 ps-3 font-semibold text-xl">
-            <NavLink
-              to="/addToys"
-              className={({ isActive }) =>
-                isActive ? "active" : "text-[#383838]"
-              }
-            >
-              Add Toys
-            </NavLink>
-          </li> : ""
-          }
+          {user ? (
+            <li className="lg:p-4 py-1 ps-3 font-semibold text-xl">
+              <NavLink
+                to="/myToys"
+                className={({ isActive }) =>
+                  isActive ? "active" : "text-[#383838]"
+                }
+              >
+                My Toys
+              </NavLink>
+            </li>
+          ) : (
+            ""
+          )}
+          {user ? (
+            <li className="lg:p-4 py-1 ps-3 font-semibold text-xl">
+              <NavLink
+                to="/addToys"
+                className={({ isActive }) =>
+                  isActive ? "active" : "text-[#383838]"
+                }
+              >
+                Add Toys
+              </NavLink>
+            </li>
+          ) : (
+            ""
+          )}
           <li className="lg:p-4 py-1 ps-3 font-semibold text-xl">
             <NavLink
               to="/about"
