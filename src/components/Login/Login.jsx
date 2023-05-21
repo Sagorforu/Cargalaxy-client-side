@@ -7,43 +7,49 @@ import { ToastContainer, toast } from "react-toastify";
 import useTitle from "../../hook/useTitle";
 
 const Login = () => {
-    const [error, setError]= useState("");
-    const { userLogin } = useContext(AuthContext);
-    const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
-    useTitle("Login")
+  const [error, setError] = useState("");
+  const { userLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  useTitle("Login");
 
-    const handleLogin = event => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email,password);
-        if (!email) {
-            setError('Email is required.')
-        } else if (!password){
-            setError('Password is required.')
-        } else {
-            setError('');
-        }
-        userLogin(email, password)
-        .then(result => {
-            console.log(result.user)
-            toast('Login successful')
-            navigate(from, { replace: true })
-        })
-        .catch(error => {
-            console.log(error.message)
-            setError("wrong email or password")
-        })
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    if (!email) {
+      setError("Email is required.");
+    } else if (!password) {
+      setError("Password is required.");
+    } else {
+      setError("");
     }
+    userLogin(email, password)
+      .then((result) => {
+        console.log(result.user);
+        toast("Login successful");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setError("wrong email or password");
+      });
+  };
 
   return (
-    <div className=" py-10 bg-base-200">
-      <div className="lg:w-[700px] w-full mx-auto">
-        <div className="">
-          <form onSubmit={handleLogin} className="background-color p-20 rounded-lg shadow-2xl">
+    <div className="lg:px-36 px-2 py-10 bg-base-200">
+      <div className="grid lg:grid-cols-2">
+        <div className="mx-auto p-10">
+          <Lottie className="object-cover" animationData={login} loop={true} />
+        </div>
+        <div className="lg:w-[700px] w-full mx-auto">
+          <form
+            onSubmit={handleLogin}
+            className="background-color p-2 mx-auto lg:p-20 rounded-lg shadow-2xl"
+          >
             <div className="font-extrabold text-center text-3xl lg:text-4xl mb-10">
               <h2>Login Now</h2>
             </div>
@@ -81,15 +87,8 @@ const Login = () => {
             </div>
           </form>
         </div>
-        <div className="mx-auto p-10">
-            <Lottie
-              className="object-cover"
-              animationData={login}
-              loop={true}
-            />
-          </div>
-          <ToastContainer />
       </div>
+      <ToastContainer />
     </div>
   );
 };

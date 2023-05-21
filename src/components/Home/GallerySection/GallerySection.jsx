@@ -16,11 +16,11 @@ const GallerySection = () => {
           Our Toys Gallery
         </h1>
       </div>
-      <div className="grid lg:grid-cols-5 grid-cols-2 items-center justify-between gap-4 pt-10 ">
+      <div className="grid lg:grid-cols-5 grid-cols-2 items-center justify-between gap-1 pt-10 ">
         {images.map((image) => (
           <div
             key={image.id}
-            className="card w-60 bg-base-100 shadow-lg hover:shadow-2xl"
+            className="card lg:w-60 w-44 bg-base-100 shadow-lg hover:shadow-2xl"
           >
             <figure
               data-aos="zoom-in"
@@ -29,7 +29,7 @@ const GallerySection = () => {
             >
               <img
                 src={image.image}
-                alt="Shoes"
+                alt=""
                 className="rounded-xl w-40 h-40 p-3"
               />
             </figure>
