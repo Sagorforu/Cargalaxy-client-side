@@ -3,6 +3,7 @@ import Headers from './HomePages/Headers';
 import GallerySection from './GallerySection/GallerySection';
 import TabCategory from './TabCategory/TabCategory';
 import useTitle from '../../hook/useTitle';
+import ChoseUs from './ChoseUs/ChoseUs';
 
 const Home = () => {
     useTitle('Home')
@@ -12,6 +13,7 @@ const Home = () => {
             <Headers></Headers>
             <GallerySection></GallerySection>
             <TabCategory></TabCategory>
+            <ChoseUs></ChoseUs>
         </div>
     );
 };
