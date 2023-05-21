@@ -18,11 +18,11 @@ const TabCategory = () => {
       });
   }, [activeTab]);
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch("http://localhost:5000/allToys")
-    .then((res) => res.json())
-    .then((data) => setToys(data))
-  },[]);
+      .then((res) => res.json())
+      .then((data) => setToys(data));
+  }, []);
 
   const handleTab = (tabName) => {
     setActiveTab(tabName);
@@ -70,7 +70,7 @@ const TabCategory = () => {
           >
             Stylish
           </button>
-          <div className="grid lg:grid-cols-3 lg:gap-8 gap-3 items-center justify-center">
+          <div className="grid lg:grid-cols-3 lg:gap-8 gap-3 items-center justify-center mt-10">
             {toys.map((toy) => (
               <Toy key={toy._id} toy={toy}></Toy>
             ))}

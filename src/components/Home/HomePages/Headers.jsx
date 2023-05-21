@@ -6,7 +6,11 @@ const Headers = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-gradient-to-r from-[#011f1d] to-[#2cfff4] bg-cover bg-center">
       <div className="grid lg:grid-cols-2 items-center gap-10 lg:px-36 px-2">
-        <div className="text-white text-center">
+        <div
+          data-aos="zoom-in-right"
+          data-aos-duration="1000"
+          className="text-white text-center"
+        >
           <div>
             <h1 className="text-4xl md:text-6xl text-start font-bold mb-6 font-mono">
               EXPLORE AND <br />{" "}
@@ -30,8 +34,12 @@ const Headers = () => {
             </button>
           </Link>
         </div>
-        <div>
-          <img className="shadow-xl" src="https://i.ibb.co/nzgfC0S/car8.png" alt="" />
+        <div data-aos="zoom-in-left" data-aos-duration="1000">
+          <img
+            className="shadow-xl"
+            src="https://i.ibb.co/nzgfC0S/car8.png"
+            alt=""
+          />
         </div>
       </div>
     </div>

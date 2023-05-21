@@ -18,10 +18,17 @@ const GallerySection = () => {
       </div>
       <div className="grid lg:grid-cols-5 grid-cols-2 items-center justify-between gap-4 pt-10 ">
         {images.map((image) => (
-          <div key={image.id} className="card lg:w-60 w-40 bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
+          <div
+            key={image.id}
+            className="card lg:w-60 w-40 bg-base-100 shadow-xl"
+          >
+            <figure
+              data-aos="zoom-in"
+              data-aos-duration="1000"
+              className="px-10 pt-10"
+            >
               <img
-                src={ image.image}
+                src={image.image}
                 alt="Shoes"
                 className="rounded-xl lg:w-40 w-32 lg:h-40 h-32 p-3"
               />

@@ -8,8 +8,10 @@ import useTitle from "../../hook/useTitle";
 
 const MyToys = () => {
   const [allToys, setAllToys] = useState([]);
-  const { user  } = useContext(AuthContext);
-  useTitle("MyToys")
+  const { user } = useContext(AuthContext);
+  useTitle("MyToys");
+  const [activeTab, setActiveTab] = useState("");
+
 
   useEffect(() => {
     fetch(`http://localhost:5000/myToys/${user?.email}`)
@@ -43,11 +45,17 @@ const MyToys = () => {
     });
   };
 
-  const handleLowToHigh = () =>{
-    fetch(`http://localhost:5000/lowToHigh/${user?.email}?value=${value}&type=${type}`)
+  useEffect(()=>{
+    fetch(`http://localhost:5000/lowToHigh/${user?.email}`)
     .then(res => res.json())
-    .then(data => setAllToys(data))
-  }
+    .then((data) => {
+      setAllToys(data);
+    });
+  },[activeTab])
+
+  const handleSort = (tabName) => {
+    setActiveTab(tabName);
+  };
 
   return (
     <div className="lg:px-36 px-2 my-10">
@@ -57,21 +65,27 @@ const MyToys = () => {
         </h1>
       </div>
       <div className="flex items-center justify-end mt-10 font-bold mr-16">
-        <label  className="mr-2">
+        {/* <label  className="mr-2">
           Sort by Price:
-        </label>
-        <select id="sort-price" className="px-4 py-2 border rounded">
-          <option onClick={handleLowToHigh} value="asc">Low to High</option>
-          <option value="desc">High to Low</option>
-        </select>
+        </label> */}
+        <div id="sort-price" className="px-4 py-2 border rounded">
+          <option value="">Sort By</option>
+          <button
+            onClick={() => handleSort("lowToHigh")}
+            className={`${activeTab == "lowToHigh" ? "text-color mr-2" : "mr-2"}`}
+            value="asc"
+          >
+            Low to High
+          </button>
+          <button
+            onClick={() => handleSort("highToLow")}
+            className={`${activeTab == "highToLow" ? "text-color mx-2" : "mx-2"}`}
+            value="desc"
+          >
+            High to Low
+          </button>
+        </div>
       </div>
-      {/* <select className="select w-full max-w-xs">
-        <option  selected>
-          Sort By Price
-        </option>
-        <option>Highest to Lowest</option>
-        <option>Lowest to Highest</option>
-      </select> */}
       <div>
         <table className="table w-full my-10">
           {/* head*/}

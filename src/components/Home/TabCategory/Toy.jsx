@@ -1,11 +1,21 @@
 import { Rating } from "@smastrom/react-rating";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Toy = ({ toy }) => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   const { _id, Picture, toyName, price, rating, subcategory } = toy || {};
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div
+      data-aos="flip-right"
+      data-aos-duration="1000"
+      className="card w-96 bg-base-100 shadow-xl"
+    >
       {Picture ? (
         <figure>
           <img
@@ -26,7 +36,8 @@ const Toy = ({ toy }) => {
         </h2>
         <p className="font-bold">Price: ${price}</p>
         <div className="flex items-center justify-center">
-        <p className="font-bold">Rating: {rating}</p><Rating style={{ maxWidth: 110 }} value={rating} readOnly />
+          <p className="font-bold">Rating: {rating}</p>
+          <Rating style={{ maxWidth: 110 }} value={rating} readOnly />
         </div>
         <Link to={`/singleToy/${_id}`}>
           <button className="my-btn btn-color my-8">View Details</button>
