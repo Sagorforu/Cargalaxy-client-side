@@ -12,7 +12,7 @@ const ContactUs = () => {
           Contact us
         </h1>
       </div>
-      <div className="background-color p-2 lg:p-20 grid lg:grid-cols-2 grid-cols-1 gap-5 rounded-lg shadow-2xl">
+      <div className="background-color p-10 lg:p-20 grid lg:grid-cols-2 grid-cols-1 gap-5 rounded-lg shadow-2xl">
         <div className="mx-auto">
           <div className="font-extrabold text-2xl lg:text-3xl mb-10">
             <h2>Send your message</h2>

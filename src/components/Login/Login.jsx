@@ -48,7 +48,7 @@ const Login = () => {
         <div className="lg:w-[700px] w-full mx-auto">
           <form
             onSubmit={handleLogin}
-            className="background-color p-2 mx-auto lg:p-20 rounded-lg shadow-2xl"
+            className="background-color p-10 mx-auto lg:p-20 rounded-lg shadow-2xl"
           >
             <div className="font-extrabold text-center text-3xl lg:text-4xl mb-10">
               <h2>Login Now</h2>
