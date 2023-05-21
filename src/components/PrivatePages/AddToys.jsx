@@ -24,7 +24,7 @@ const AddToys = () => {
       sellerName: sellerName,
       sellerEmail: sellerEmail,
       Picture: photo,
-      price: price,
+      price: parseFloat(price),
       rating: rating,
       quantity: quantity,
       description: description,

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProviders";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import Swal from "sweetalert2";
 import useTitle from "../../hook/useTitle";
 
@@ -10,7 +10,7 @@ const MyToys = () => {
   const [allToys, setAllToys] = useState([]);
   const { user } = useContext(AuthContext);
   useTitle("MyToys");
-  const [sort , setSort ] = useState("");
+  const [sort , setSort ] = useState("asc");
   console.log(sort)
 
   useEffect(() => {
@@ -54,16 +54,14 @@ const MyToys = () => {
         </h1>
       </div>
       <div className="flex items-center justify-end mt-10 font-bold mr-16">
-        <select id="sort-price" className="px-4 py-2 border rounded">
+        <select onChange={(e) => setSort(e.target.value)} id="sort-price" className="px-4 py-2 border rounded">
           <option value="">Sort By</option>
           <option
-            onClick={() => setSort("asc")}
             value="asc"
           >
             Low to High
           </option>
           <option
-            onClick={() => setSort("desc")}
             value="desc"
           >
             High to Low

@@ -20,7 +20,7 @@ const GallerySection = () => {
         {images.map((image) => (
           <div
             key={image.id}
-            className="card lg:w-60 w-40 bg-base-100 shadow-lg hover:shadow-2xl"
+            className="card w-60 bg-base-100 shadow-lg hover:shadow-2xl"
           >
             <figure
               data-aos="zoom-in"
@@ -30,7 +30,7 @@ const GallerySection = () => {
               <img
                 src={image.image}
                 alt="Shoes"
-                className="rounded-xl lg:w-40 w-32 lg:h-40 h-32 p-3"
+                className="rounded-xl w-40 h-40 p-3"
               />
             </figure>
           </div>

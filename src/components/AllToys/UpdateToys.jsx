@@ -25,7 +25,7 @@ const UpdateToys = () => {
     const quantity = form.quantity.value;
     const description = form.description.value;
     const toyData = {
-      price: price,
+      price: parseFloat(price),
       quantity: quantity,
       description: description,
     };
