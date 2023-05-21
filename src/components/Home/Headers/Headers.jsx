@@ -29,14 +29,14 @@ const Headers = () => {
           </div>
           <Link to="/allToys">
             {" "}
-            <button className="text-start toy-btn btn-color flex items-center justify-center">
+            <button className="text-start toy-btn shadow-lg hover:shadow-xl btn-color flex items-center justify-center">
               <FaCartPlus className="text-2xl font-bold mr-2" /> BUY TOYS
             </button>
           </Link>
         </div>
         <div data-aos="zoom-in-left" data-aos-duration="1000">
           <img
-            className="shadow-xl"
+            className="shadow-lg hover:shadow-xl"
             src="https://i.ibb.co/nzgfC0S/car8.png"
             alt=""
           />

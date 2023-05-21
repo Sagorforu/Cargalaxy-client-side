@@ -14,7 +14,7 @@ const Toy = ({ toy }) => {
     <div
       data-aos="flip-right"
       data-aos-duration="1000"
-      className="card w-96 bg-base-100 shadow-xl"
+      className="card w-96 bg-base-100 shadow-lg hover:shadow-2xl"
     >
       {Picture ? (
         <figure>
@@ -39,8 +39,8 @@ const Toy = ({ toy }) => {
           <p className="font-bold">Rating: {rating}</p>
           <Rating style={{ maxWidth: 110 }} value={rating} readOnly />
         </div>
-        <Link to={`/singleToy/${_id}`}>
-          <button className="my-btn btn-color my-8">View Details</button>
+        <Link className="shadow-lg text-center rounded-lg" to={`/singleToy/${_id}`}>
+          <button className="my-btn btn-color my-8 shadow-lg hover:shadow-xl">View Details</button>
         </Link>
       </div>
     </div>

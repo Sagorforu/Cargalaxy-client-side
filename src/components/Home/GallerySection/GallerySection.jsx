@@ -20,7 +20,7 @@ const GallerySection = () => {
         {images.map((image) => (
           <div
             key={image.id}
-            className="card lg:w-60 w-40 bg-base-100 shadow-xl"
+            className="card lg:w-60 w-40 bg-base-100 shadow-lg hover:shadow-2xl"
           >
             <figure
               data-aos="zoom-in"

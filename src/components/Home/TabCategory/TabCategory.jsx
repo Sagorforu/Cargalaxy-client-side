@@ -44,8 +44,8 @@ const TabCategory = () => {
             onClick={() => handleTab("truck")}
             className={`${
               activeTab == "truck"
-                ? "toy-btn mx-4 mb-5 btn-color"
-                : "mx-4 my-btn btn-color"
+                ? "toy-btn mx-4 mb-5 btn-color shadow-lg hover:shadow-xl"
+                : "mx-4 my-btn btn-color shadow-lg hover:shadow-xl"
             }`}
           >
             Truck
@@ -54,8 +54,8 @@ const TabCategory = () => {
             onClick={() => handleTab("policeCar")}
             className={`${
               activeTab == "policeCar"
-                ? "toy-btn mx-4 mb-5 btn-color"
-                : "mx-4 my-btn btn-color"
+                ? "toy-btn mx-4 mb-5 btn-color shadow-lg hover:shadow-xl"
+                : "mx-4 my-btn btn-color shadow-lg hover:shadow-xl"
             }`}
           >
             Police
@@ -64,8 +64,8 @@ const TabCategory = () => {
             onClick={() => handleTab("stylishCar")}
             className={`${
               activeTab == "stylishCar"
-                ? "toy-btn mx-4 mb-5 btn-color"
-                : "mx-4 my-btn btn-color"
+                ? "toy-btn mx-4 mb-5 btn-color shadow-lg hover:shadow-xl"
+                : "mx-4 my-btn btn-color shadow-lg hover:shadow-xl"
             }`}
           >
             Stylish

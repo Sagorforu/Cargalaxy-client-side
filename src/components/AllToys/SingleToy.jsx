@@ -26,11 +26,11 @@ const SingleToy = () => {
         </h1>
       </div>
       <div className="grid lg:grid-cols-2 items-center gap-4">
-        <div className="shadow-xl rounded-xl mb-4">
+        <div className="shadow-lg hover:shadow-2xl rounded-xl mb-4">
           <img className="rounded-xl" src={Picture} alt="" />
         </div>
         <div className="mx-auto">
-          <div className="shadow-xl p-12 py-20 rounded-xl background-color space-y-4">
+          <div className="shadow-lg hover:shadow-2xl p-12 py-20 rounded-xl background-color space-y-4">
             <h1 className="text-xl text-[#383838] font-semibold">
               Toy Name: {toyName}
             </h1>
@@ -41,7 +41,7 @@ const SingleToy = () => {
               Seller Email: {sellerEmail}
             </h1>
           </div>
-          <div className="shadow-xl p-12 py-20 mt-5 rounded-xl background-color space-y-4">
+          <div className="shadow-lg hover:shadow-2xl p-12 py-20 mt-5 rounded-xl background-color space-y-4">
             <h1 className="text-xl text-[#383838] font-semibold">
               Price: ${price}
             </h1>
@@ -57,7 +57,7 @@ const SingleToy = () => {
           </div>
         </div>
       </div>
-      <div className="my-6 shadow-xl p-10 rounded-xl background-color">
+      <div className="my-6 shadow-lg hover:shadow-2xl p-10 rounded-xl background-color">
         <h1 className="lg:text-4xl text-[#383838] text-center font-bold text-3xl mb-4">
           Description
         </h1>
